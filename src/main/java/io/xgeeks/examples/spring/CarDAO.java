@@ -2,7 +2,6 @@ package io.xgeeks.examples.spring;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
@@ -12,9 +11,10 @@ import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 import org.springframework.stereotype.Repository;
 
 import java.util.Collections;
-import java.util.List;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
+import java.util.stream.Stream;
 
 @Repository
 public class CarDAO {
@@ -41,8 +41,8 @@ public class CarDAO {
 
     public Optional<Car> findBy(Long id) {
         String sql = queries.getFindById();
-        SqlParameterSource namedParameters = new MapSqlParameterSource().addValue("id", id);
-        return template.queryForStream(sql, namedParameters, rowMapper).findFirst();
+        Map<String, Object> parameters = Collections.singletonMap("id", id);
+        return template.queryForStream(sql, parameters, rowMapper).findFirst();
     }
 
     public boolean delete(Long id) {
@@ -55,5 +55,13 @@ public class CarDAO {
         String sql = queries.getUpdate();
         Map<String, Object> paramMap = car.toMap();
         return template.update(sql, paramMap) == 1;
+    }
+
+    public Stream<Car> findAll(Page page) {
+        String sql = queries.getFindAll();
+        Map<String, Object> paramMap = new HashMap<>();
+        paramMap.put("limit", page.getLimit());
+        paramMap.put("offset", page.getOffset());
+        return template.queryForStream(sql, paramMap, rowMapper);
     }
 }
