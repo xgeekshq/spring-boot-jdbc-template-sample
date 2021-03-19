@@ -12,6 +12,8 @@ public class CarQueries {
     private String deleteById;
     @Value("${car.query.update}")
     private String update;
+    @Value("${car.query.find.all}")
+    private String findAll;
 
     public String getFindById() {
         return findById;
@@ -25,4 +27,7 @@ public class CarQueries {
         return update;
     }
 
+    public String getFindAll() {
+        return findAll;
+    }
 }
