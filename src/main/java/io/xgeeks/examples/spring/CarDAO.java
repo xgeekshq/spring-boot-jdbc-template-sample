@@ -20,13 +20,15 @@ import java.util.Optional;
 public class CarDAO {
 
     private final NamedParameterJdbcTemplate template;
+    private final CarQueries queries;
     private final RowMapper<Car> rowMapper;
     private final SimpleJdbcInsert insert;
 
     @Autowired
-    public CarDAO(NamedParameterJdbcTemplate template) {
+    public CarDAO(NamedParameterJdbcTemplate template, CarQueries queries) {
         this.template = template;
         this.rowMapper = new BeanPropertyRowMapper<>(Car.class);
+        this.queries = queries;
         this.insert = new SimpleJdbcInsert(template.getJdbcTemplate());
         insert.setTableName("CAR");
         insert.usingGeneratedKeyColumns("ID");
@@ -38,19 +40,19 @@ public class CarDAO {
     }
 
     public Optional<Car> findBy(Long id) {
-        String sql = "SELECT * FROM CAR WHERE ID = :id";
+        String sql = queries.getFindById();
         SqlParameterSource namedParameters = new MapSqlParameterSource().addValue("id", id);
         return template.queryForStream(sql, namedParameters, rowMapper).findFirst();
     }
 
     public boolean delete(Long id) {
-        String sql = "DELETE FROM CAR WHERE ID =:id";
+        String sql = queries.getDeleteById();
         Map<String, Object> paramMap = Collections.singletonMap("id", id);
         return template.update(sql, paramMap) == 1;
     }
 
     public boolean update(Car car) {
-        String sql = "update CAR set name = :name, city = :city, model= :model, color =:color  where id = :id";
+        String sql = queries.getUpdate();
         Map<String, Object> paramMap = car.toMap();
         return template.update(sql, paramMap) == 1;
     }
