@@ -84,7 +84,7 @@ class CarDAOTest {
                     .build();
             cars.add(carDAO.insert(car));
         }
-        Page page = Page.of(2, 2);
+        Page page = Page.of(1, 2);
         List<Car> result = carDAO.findAll(page).collect(Collectors.toList());
         Assertions.assertEquals(2, result.size());
     }
