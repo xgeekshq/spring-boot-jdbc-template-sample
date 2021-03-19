@@ -9,6 +9,7 @@ import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Collections;
 import java.util.HashMap;
@@ -34,6 +35,7 @@ public class CarDAO {
         insert.usingGeneratedKeyColumns("ID");
     }
 
+    @Transactional
     public Car insert(Car car) {
         Number id = insert.executeAndReturnKey(new BeanPropertySqlParameterSource(car));
         return findBy(id.longValue()).orElseThrow(() -> new IllegalStateException(""));
@@ -45,12 +47,14 @@ public class CarDAO {
         return template.queryForStream(sql, parameters, rowMapper).findFirst();
     }
 
+    @Transactional
     public boolean delete(Long id) {
         String sql = queries.getDeleteById();
         Map<String, Object> paramMap = Collections.singletonMap("id", id);
         return template.update(sql, paramMap) == 1;
     }
 
+    @Transactional
     public boolean update(Car car) {
         String sql = queries.getUpdate();
         Map<String, Object> paramMap = car.toMap();
