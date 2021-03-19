@@ -1,0 +1,8 @@
+CREATE TABLE IF NOT EXISTS CAR (
+   ID INT NOT NULL,
+   NAME varchar(50) NOT NULL,
+   CITY varchar(100) NOT NULL,
+   MODEL varchar(150) NOT NULL,
+   COLOR varchar(50) NOT NULL,
+   PRIMARY KEY (ID)
+)
