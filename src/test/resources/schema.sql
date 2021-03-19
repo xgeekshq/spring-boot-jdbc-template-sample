@@ -1,9 +1,8 @@
 CREATE TABLE CAR (
-ID INT,
+ID IDENTITY NOT NULL PRIMARY KEY,
 NAME varchar(50),
 CITY varchar(100),
 MODEL varchar(150),
-COLOR varchar(50),
-PRIMARY KEY (ID)
+COLOR varchar(50)
 );
 
