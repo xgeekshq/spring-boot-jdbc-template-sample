@@ -16,6 +16,9 @@ public class Car {
 
     private String color;
 
+    Car() {
+    }
+
     Car(Long id, String name,
         String city, String model,
         String color) {
@@ -44,6 +47,26 @@ public class Car {
 
     public String getColor() {
         return color;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public void setModel(String model) {
+        this.model = model;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
     }
 
     @Override

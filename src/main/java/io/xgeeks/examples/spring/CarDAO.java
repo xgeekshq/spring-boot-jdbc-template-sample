@@ -37,12 +37,12 @@ public class CarDAO {
 
     public Optional<Car> findBy(Long id) {
         String sql = "SELECT * FROM CAR WHERE ID = :id";
-        SqlParameterSource namedParameters = new MapSqlParameterSource().addValue("id", 1);
+        SqlParameterSource namedParameters = new MapSqlParameterSource().addValue("id", id);
         return template.queryForStream(sql, namedParameters, rowMapper).findFirst();
     }
 
     public boolean delete(Long id) {
-        String sql = "DELETE FROM CAR WHERE id =:id?";
+        String sql = "DELETE FROM CAR WHERE ID =:id?";
         Map<String, Object> paramMap = Collections.singletonMap("id", id);
         return template.update(sql, paramMap) == 1;
     }

@@ -17,9 +17,9 @@ class CarDAOTest {
     private CarDAO carDAO;
 
     @Test
-    public void shouldBeNotNull() {
+    public void shouldFindById() {
         Assertions.assertNotNull(carDAO);
-        Optional<Car> by = carDAO.findBy(1L);
-        Assertions.assertNotNull(by);
+        Optional<Car> car = carDAO.findBy(1L);
+        Assertions.assertNotNull(car);
     }
 }
