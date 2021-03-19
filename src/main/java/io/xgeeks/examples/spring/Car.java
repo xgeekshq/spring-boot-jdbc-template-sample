@@ -1,7 +1,5 @@
 package io.xgeeks.examples.spring;
 
-import org.springframework.jdbc.core.BeanPropertyRowMapper;
-
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
