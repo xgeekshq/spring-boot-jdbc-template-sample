@@ -1,5 +1,8 @@
 package io.xgeeks.examples.spring;
 
+import org.assertj.core.matcher.AssertionMatcher;
+import org.hamcrest.MatcherAssert;
+import org.hamcrest.Matchers;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -87,5 +90,10 @@ class CarDAOTest {
         Page page = Page.of(1, 2);
         List<Car> result = carDAO.findAll(page).collect(Collectors.toList());
         Assertions.assertEquals(2, result.size());
+        MatcherAssert.assertThat(result, Matchers.contains(cars.get(0), cars.get(1)));
+        Page nextPage = page.next();
+        result = carDAO.findAll(nextPage).collect(Collectors.toList());
+        Assertions.assertEquals(2, result.size());
+        MatcherAssert.assertThat(result, Matchers.contains(cars.get(2), cars.get(3)));
     }
 }

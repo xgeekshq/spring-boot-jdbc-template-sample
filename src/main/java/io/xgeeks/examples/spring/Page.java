@@ -1,5 +1,7 @@
 package io.xgeeks.examples.spring;
 
+import java.util.Objects;
+
 public final class Page {
 
     private final long page;
@@ -20,6 +22,27 @@ public final class Page {
         return (page - 1) * size;
     }
 
+    public Page next() {
+        return Page.of(page + 1, size);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Page page1 = (Page) o;
+        return page == page1.page && size == page1.size;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(page, size);
+    }
+
     @Override
     public String toString() {
         return "Page{" +
@@ -31,4 +54,5 @@ public final class Page {
     public static Page of(long page, long size) {
         return new Page(page, size);
     }
+
 }
