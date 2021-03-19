@@ -22,4 +22,17 @@ class CarDAOTest {
         Optional<Car> car = carDAO.findBy(1L);
         Assertions.assertNotNull(car);
     }
+
+    @Test
+    public void shouldInsertCar() {
+        Car car = Car.builder()
+                .withCity("Salvador")
+                .withColor("Red")
+                .withName("Fiat")
+                .withModel("Model")
+                .build();
+        Car insert = carDAO.insert(car);
+        Assertions.assertNotNull(insert);
+        Assertions.assertNotNull(insert.getId());
+    }
 }
