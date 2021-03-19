@@ -1,5 +1,9 @@
 package io.xgeeks.examples.spring;
 
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
+
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Objects;
 
 public class Car {
@@ -15,8 +19,8 @@ public class Car {
     private String color;
 
     Car(Long id, String name,
-               String city, String model,
-               String color) {
+        String city, String model,
+        String color) {
         this.id = id;
         this.name = name;
         this.city = city;
@@ -55,6 +59,17 @@ public class Car {
         Car car = (Car) o;
         return Objects.equals(id, car.id);
     }
+
+    public Map<String, Object> toMap() {
+        Map<String, Object> parameters = new HashMap<>();
+        parameters.put("ID", this.id);
+        parameters.put("name", this.name);
+        parameters.put("city", this.city);
+        parameters.put("model", this.model);
+        parameters.put("color", this.color);
+        return parameters;
+    }
+
 
     @Override
     public int hashCode() {
