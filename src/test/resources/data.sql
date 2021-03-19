@@ -1,0 +1,1 @@
+INSERT INTO CAR (ID, NAME, CITY, MODEL,COLOR) VALUES (1, 'Ferrari', 'Rome', 'Testorona', 'Red');
