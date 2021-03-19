@@ -83,7 +83,7 @@ public class Car {
 
     public Map<String, Object> toMap() {
         Map<String, Object> parameters = new HashMap<>();
-        parameters.put("ID", this.id);
+        parameters.put("id", this.id);
         parameters.put("name", this.name);
         parameters.put("city", this.city);
         parameters.put("model", this.model);

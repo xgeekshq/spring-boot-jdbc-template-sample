@@ -21,17 +21,18 @@ public class CarDAO {
 
     private final NamedParameterJdbcTemplate template;
     private final RowMapper<Car> rowMapper;
+    private final SimpleJdbcInsert insert;
 
     @Autowired
     public CarDAO(NamedParameterJdbcTemplate template) {
         this.template = template;
         this.rowMapper = new BeanPropertyRowMapper<>(Car.class);
+        this.insert = new SimpleJdbcInsert(template.getJdbcTemplate());
+        insert.setTableName("CAR");
+        insert.usingGeneratedKeyColumns("ID");
     }
 
     public Car insert(Car car) {
-        SimpleJdbcInsert insert = new SimpleJdbcInsert(template.getJdbcTemplate());
-        insert.setTableName("CAR");
-        insert.usingGeneratedKeyColumns("ID");
         Number id = insert.executeAndReturnKey(new BeanPropertySqlParameterSource(car));
         return findBy(id.longValue()).orElseThrow(() -> new IllegalStateException(""));
     }
@@ -43,7 +44,7 @@ public class CarDAO {
     }
 
     public boolean delete(Long id) {
-        String sql = "DELETE FROM CAR WHERE ID =:id?";
+        String sql = "DELETE FROM CAR WHERE ID =:id";
         Map<String, Object> paramMap = Collections.singletonMap("id", id);
         return template.update(sql, paramMap) == 1;
     }

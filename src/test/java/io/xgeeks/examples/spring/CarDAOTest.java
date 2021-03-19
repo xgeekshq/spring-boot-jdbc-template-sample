@@ -35,4 +35,31 @@ class CarDAOTest {
         Assertions.assertNotNull(insert);
         Assertions.assertNotNull(insert.getId());
     }
+
+    @Test
+    public void shouldDelete() {
+        Car car = Car.builder()
+                .withCity("Salvador")
+                .withColor("Red")
+                .withName("Fiat")
+                .withModel("Model")
+                .build();
+        Car insert = carDAO.insert(car);
+        carDAO.delete(insert.getId());
+        Optional<Car> empty = carDAO.findBy(insert.getId());
+        Assertions.assertTrue(empty.isEmpty());
+    }
+
+    @Test
+    public void shouldUpdate() {
+        Car car = Car.builder()
+                .withCity("Salvador")
+                .withColor("Red")
+                .withName("Fiat")
+                .withModel("Model")
+                .build();
+        Car insert = carDAO.insert(car);
+        insert.setModel("Update");
+        carDAO.update(insert);
+    }
 }
