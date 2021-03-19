@@ -27,4 +27,8 @@ public final class Page {
                 ", size=" + size +
                 '}';
     }
+
+    public static Page of(long page, long size) {
+        return new Page(page, size);
+    }
 }
