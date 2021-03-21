@@ -52,6 +52,11 @@ public final class Page {
     }
 
     public static Page of(long page, long size) {
+        if (page <= 0) {
+            throw new IllegalArgumentException("The page cannot be either zero or negative");
+        } else if (size <= 0) {
+            throw new IllegalArgumentException("The size cannot be either zero or negative");
+        }
         return new Page(page, size);
     }
 
