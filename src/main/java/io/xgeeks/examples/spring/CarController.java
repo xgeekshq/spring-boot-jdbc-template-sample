@@ -20,7 +20,7 @@ import static org.springframework.http.HttpStatus.NOT_FOUND;
 
 @RestController
 @RequestMapping("/cars")
-public class CarController {
+        public class CarController {
 
     private final CarService service;
 
@@ -30,7 +30,7 @@ public class CarController {
 
     @GetMapping
     public List<CarDTO> findAll(@RequestParam(value = "page", defaultValue = "1") Long page,
-                                @RequestParam(value = "page", defaultValue = "10") Long size) {
+                                @RequestParam(value = "size", defaultValue = "10") Long size) {
         return service.findAll(Page.of(page, size));
     }
 

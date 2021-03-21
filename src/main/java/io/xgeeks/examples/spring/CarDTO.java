@@ -2,6 +2,8 @@ package io.xgeeks.examples.spring;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import java.util.Objects;
+
 public class CarDTO {
 
     private Long id;
@@ -52,5 +54,37 @@ public class CarDTO {
 
     public void setColor(String color) {
         this.color = color;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        CarDTO carDTO = (CarDTO) o;
+        return Objects.equals(id, carDTO.id)
+                && Objects.equals(name, carDTO.name)
+                && Objects.equals(city, carDTO.city)
+                && Objects.equals(model, carDTO.model)
+                && Objects.equals(color, carDTO.color);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, city, model, color);
+    }
+
+    @Override
+    public String toString() {
+        return "CarDTO{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", city='" + city + '\'' +
+                ", model='" + model + '\'' +
+                ", color='" + color + '\'' +
+                '}';
     }
 }
