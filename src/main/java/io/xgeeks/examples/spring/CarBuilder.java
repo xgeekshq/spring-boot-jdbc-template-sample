@@ -7,27 +7,27 @@ public class CarBuilder {
     private String model;
     private String color;
 
-    public CarBuilder withId(Long id) {
+    public CarBuilder id(Long id) {
         this.id = id;
         return this;
     }
 
-    public CarBuilder withName(String name) {
+    public CarBuilder name(String name) {
         this.name = name;
         return this;
     }
 
-    public CarBuilder withCity(String city) {
+    public CarBuilder city(String city) {
         this.city = city;
         return this;
     }
 
-    public CarBuilder withModel(String model) {
+    public CarBuilder model(String model) {
         this.model = model;
         return this;
     }
 
-    public CarBuilder withColor(String color) {
+    public CarBuilder color(String color) {
         this.color = color;
         return this;
     }

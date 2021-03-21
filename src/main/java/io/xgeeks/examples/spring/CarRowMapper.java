@@ -14,9 +14,9 @@ public class CarRowMapper implements RowMapper<Car> {
         String city = resultSet.getString("city");
         String model = resultSet.getString("model");
         String color = resultSet.getString("color");
-        return Car.builder().withId(id).withName(name)
-                .withCity(city)
-                .withModel(model)
-                .withColor(color).build();
+        return Car.builder().id(id).name(name)
+                .city(city)
+                .model(model)
+                .color(color).build();
     }
 }

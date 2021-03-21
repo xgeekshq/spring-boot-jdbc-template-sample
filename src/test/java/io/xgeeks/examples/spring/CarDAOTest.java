@@ -1,6 +1,5 @@
 package io.xgeeks.examples.spring;
 
-import org.assertj.core.matcher.AssertionMatcher;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.Assertions;
@@ -15,7 +14,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.MOCK)
@@ -37,10 +35,10 @@ class CarDAOTest {
     @Test
     public void shouldInsertCar() {
         Car car = Car.builder()
-                .withCity("Salvador")
-                .withColor("Red")
-                .withName("Fiat")
-                .withModel("Model")
+                .city("Salvador")
+                .color("Red")
+                .name("Fiat")
+                .model("Model")
                 .build();
         Car insert = carDAO.insert(car);
         Assertions.assertNotNull(insert);
@@ -50,10 +48,10 @@ class CarDAOTest {
     @Test
     public void shouldDelete() {
         Car car = Car.builder()
-                .withCity("Salvador")
-                .withColor("Red")
-                .withName("Fiat")
-                .withModel("Model")
+                .city("Salvador")
+                .color("Red")
+                .name("Fiat")
+                .model("Model")
                 .build();
         Car insert = carDAO.insert(car);
         carDAO.delete(insert.getId());
@@ -64,10 +62,10 @@ class CarDAOTest {
     @Test
     public void shouldUpdate() {
         Car car = Car.builder()
-                .withCity("Salvador")
-                .withColor("Red")
-                .withName("Fiat")
-                .withModel("Model")
+                .city("Salvador")
+                .color("Red")
+                .name("Fiat")
+                .model("Model")
                 .build();
         Car insert = carDAO.insert(car);
         insert.setModel("Update");
@@ -80,10 +78,10 @@ class CarDAOTest {
         List<Car> cars = new ArrayList<>();
         for (int index = 0; index < 10; index++) {
             Car car = Car.builder()
-                    .withCity("Salvador")
-                    .withColor("Red")
-                    .withName("Fiat " + index)
-                    .withModel("Model")
+                    .city("Salvador")
+                    .color("Red")
+                    .name("Fiat " + index)
+                    .model("Model")
                     .build();
             cars.add(carDAO.insert(car));
         }
