@@ -9,6 +9,13 @@ For further reference, please consider the following sections:
 * [Create an OCI image](https://docs.spring.io/spring-boot/docs/2.4.4/maven-plugin/reference/html/#build-image)
 * [JDBC API](https://docs.spring.io/spring-boot/docs/2.4.4/reference/htmlsingle/#boot-features-sql)
 
+## Run locally
+
+1. [Install Docker](https://docs.docker.com/get-docker/)
+2. Execute
+    * `docker run -d -e POSTGRES_PASSWORD=admin postgres`
+    
+
 ### Guides
 
 The following guides illustrate how to use some features concretely:
