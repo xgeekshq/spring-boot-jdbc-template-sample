@@ -90,7 +90,6 @@ class CarControllerTest {
 
     @Test
     public void shouldFindAllByDefaultValues() {
-
         for (int index = 0; index < 20; index++) {
             this.template.postForObject(getUrl(), getCarDTO(), CarDTO.class);
         }
@@ -104,9 +103,8 @@ class CarControllerTest {
 
     @Test
     public void shouldFindAllOverWriteValues() {
-        List<CarDTO> dtos = new ArrayList<>(20);
         for (int index = 0; index < 20; index++) {
-            dtos.add(this.template.postForObject(getUrl(), getCarDTO(), CarDTO.class));
+            this.template.postForObject(getUrl(), getCarDTO(), CarDTO.class);
         }
 
         UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(getUrl())
@@ -117,9 +115,9 @@ class CarControllerTest {
                 new ParameterizedTypeReference<CarDTO[]>() {
                 });
 
-        List<CarDTO> carDTOS = dtos.subList(4, 9);
         CarDTO[] body = response.getBody();
-        MatcherAssert.assertThat(carDTOS, Matchers.containsInAnyOrder(body));
+        Assertions.assertEquals(5, body.length);
+
     }
 
     private CarDTO getCarDTO() {
