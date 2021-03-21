@@ -19,6 +19,5 @@ class HelloWorldControllerTest {
     public void shouldReturnHelloWorld() {
         assertThat(this.template.getForObject("http://localhost:" + port + "/",
                 String.class)).contains("Hello World Spring Boot");
-
     }
 }
