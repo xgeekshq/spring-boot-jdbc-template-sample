@@ -91,6 +91,12 @@ public class Car {
         return parameters;
     }
 
+    public void update(Car car) {
+        this.name = car.name;
+        this.city = car.city;
+        this.model = car.model;
+        this.color = car.color;
+    }
 
     @Override
     public int hashCode() {
