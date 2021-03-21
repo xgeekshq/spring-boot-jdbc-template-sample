@@ -13,7 +13,7 @@ For further reference, please consider the following sections:
 
 1. [Install Docker](https://docs.docker.com/get-docker/)
 2. Execute
-    * `docker run -d -e POSTGRES_PASSWORD=admin postgres`
+    * `docker run -d -e POSTGRES_PASSWORD=admin -e POSTGRES_DB=cars postgres`
     
 
 ### Guides
