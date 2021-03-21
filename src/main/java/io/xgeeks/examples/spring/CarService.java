@@ -30,4 +30,17 @@ public class CarService {
     public Optional<CarDTO> finById(Long id) {
         return dao.findBy(id).map(mapper::toDTO);
     }
+
+    public CarDTO insert(CarDTO dto) {
+        Car car = mapper.toEntity(dto);
+        return mapper.toDTO(dao.insert(car));
+    }
+
+    public CarDTO update(Long id, CarDTO dto) {
+        Car car = dao.findBy(id)
+                .orElseThrow(() -> new EntityNotFoundException("Car does not find with the id " + id));
+        car.update(mapper.toEntity(dto));
+        dao.update(car);
+        return mapper.toDTO(car);
+    }
 }
