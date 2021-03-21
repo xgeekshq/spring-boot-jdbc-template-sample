@@ -11,6 +11,6 @@ public class HelloWorldController {
 
     @GetMapping(produces = MediaType.TEXT_PLAIN_VALUE)
     public String hello() {
-        return "Hello World Spring Boot using Platform.sh";
+        return "Hello World Spring Boot";
     }
 }
