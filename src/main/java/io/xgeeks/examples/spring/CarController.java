@@ -1,5 +1,7 @@
 package io.xgeeks.examples.spring;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -39,12 +41,13 @@ public class CarController {
     }
 
     @PostMapping
-    public CarDTO insert(@RequestBody CarDTO dto) {
-        return service.insert(dto);
+    public ResponseEntity<CarDTO> insert(@RequestBody CarDTO dto) {
+        return new ResponseEntity<>(service.insert(dto), HttpStatus.CREATED);
     }
 
     @PutMapping(value = "{id}")
     public CarDTO update(@PathVariable("id") Long id, @RequestBody CarDTO dto) {
         return service.update(id, dto);
     }
+
 }
