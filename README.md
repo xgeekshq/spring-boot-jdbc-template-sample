@@ -13,8 +13,10 @@ For further reference, please consider the following sections:
 
 1. [Install Docker](https://docs.docker.com/get-docker/)
 2. Execute
-    * `docker run -d -e POSTGRES_PASSWORD=admin -e POSTGRES_DB=cars postgres`
-    
+    * `docker run -d -e POSTGRES_PASSWORD=admin -e POSTGRES_DB=cars -p 5432:5432 postgres`
+3. Execute
+   * `mvn clean package`
+   * `java -jar target/spring-jdbc-template-0.0.1-SNAPSHOT.jar`
 
 ### Guides
 
