@@ -43,4 +43,8 @@ public class CarService {
         dao.update(car);
         return mapper.toDTO(car);
     }
+
+    public void delete(Long id) {
+        dao.delete(id);
+    }
 }
