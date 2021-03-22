@@ -1,7 +1,5 @@
 package io.xgeeks.examples.spring;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
 import java.util.Objects;
 
 public class CarDTO {
