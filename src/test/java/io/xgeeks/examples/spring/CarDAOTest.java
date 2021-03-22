@@ -68,7 +68,13 @@ class CarDAOTest {
                 .model("Model")
                 .build();
         Car insert = carDAO.insert(car);
-        insert.setModel("Update");
+
+        insert.update(Car.builder()
+                .city("Salvador")
+                .color("Red")
+                .name("Fiat")
+                .model("Update")
+                .build());
         carDAO.update(insert);
     }
 

@@ -28,7 +28,8 @@ public class CarDAO {
     @Autowired
     public CarDAO(NamedParameterJdbcTemplate template, CarQueries queries) {
         this.template = template;
-        this.rowMapper = new BeanPropertyRowMapper<>(Car.class);
+        //this.rowMapper = new BeanPropertyRowMapper<>(Car.class);
+        this.rowMapper = new CarRowMapper();
         this.queries = queries;
         this.insert = new SimpleJdbcInsert(template.getJdbcTemplate());
         insert.setTableName("CAR");
