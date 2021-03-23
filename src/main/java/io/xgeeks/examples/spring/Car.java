@@ -16,6 +16,10 @@ public class Car {
 
     private String color;
 
+    /**
+     * @Deprecated use the {@link Car#builder()} instead.
+     */
+    @Deprecated
     Car() {
     }
 
