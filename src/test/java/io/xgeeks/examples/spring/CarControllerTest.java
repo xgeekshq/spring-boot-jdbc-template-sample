@@ -94,7 +94,7 @@ class CarControllerTest {
             this.template.postForObject(getUrl(), getCarDTO(), CarDTO.class);
         }
         ResponseEntity<List<CarDTO>> response = this.template.exchange(getUrl(), HttpMethod.GET, null,
-                new ParameterizedTypeReference<List<CarDTO>>() {
+                new ParameterizedTypeReference<>() {
                 });
 
         List<CarDTO> body = response.getBody();
@@ -112,7 +112,7 @@ class CarControllerTest {
                 .queryParam("size", 5);
 
         ResponseEntity<CarDTO[]> response = this.template.exchange(builder.toUriString(), HttpMethod.GET, null,
-                new ParameterizedTypeReference<CarDTO[]>() {
+                new ParameterizedTypeReference<>() {
                 });
 
         CarDTO[] body = response.getBody();
