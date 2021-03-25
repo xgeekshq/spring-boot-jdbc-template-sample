@@ -36,7 +36,7 @@ public class CarController {
 
     @GetMapping("{id}")
     public CarDTO findById(@PathVariable Long id) {
-        Optional<CarDTO> car = service.finById(id);
+        Optional<CarDTO> car = service.findById(id);
         return car.orElseThrow(() -> new ResponseStatusException(NOT_FOUND,
                 "Unable to find the car " + id));
     }

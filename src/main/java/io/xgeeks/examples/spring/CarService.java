@@ -27,7 +27,7 @@ public class CarService {
                 .collect(Collectors.toList());
     }
 
-    public Optional<CarDTO> finById(Long id) {
+    public Optional<CarDTO> findById(Long id) {
         return dao.findBy(id).map(mapper::toDTO);
     }
 
