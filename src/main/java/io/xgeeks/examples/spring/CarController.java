@@ -20,7 +20,7 @@ import static org.springframework.http.HttpStatus.NOT_FOUND;
 
 @RestController
 @RequestMapping("/cars")
-        public class CarController {
+public class CarController {
 
     private final CarService service;
 
