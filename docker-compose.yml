@@ -10,7 +10,8 @@ services:
       POSTGRES_DB: cars
     ports:
       - 5432:5432
-
+    volumes:
+      - ./sql/create_tables.sql:/docker-entrypoint-initdb.d/create_tables.sql
   app:
     image: "spring-jdbc-template:0.0.1-SNAPSHOT"
     networks:
