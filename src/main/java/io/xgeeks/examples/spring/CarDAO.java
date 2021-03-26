@@ -28,8 +28,8 @@ public class CarDAO {
         this.rowMapper = new CarRowMapper();
         this.queries = queries;
         this.insert = new SimpleJdbcInsert(template.getJdbcTemplate());
-        insert.setTableName("CAR");
-        insert.usingGeneratedKeyColumns("ID");
+        this.insert.setTableName("car");
+        this.insert.usingGeneratedKeyColumns("id");
     }
 
     @Transactional
