@@ -1,0 +1,15 @@
+version:  '3.2'
+
+services:
+  db:
+    image: "postgres"
+    networks:
+      - spring
+    environment:
+      POSTGRES_PASSWORD: admin
+      POSTGRES_DB: cars
+    ports:
+      - 9042:9042
+
+networks:
+  spring:
