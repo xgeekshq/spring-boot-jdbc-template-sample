@@ -9,7 +9,7 @@ services:
       POSTGRES_PASSWORD: admin
       POSTGRES_DB: cars
     ports:
-      - 9042:9042
+      - 5432:5432
 
 networks:
   spring:
