@@ -18,6 +18,14 @@ For further reference, please consider the following sections:
    * `mvn clean package`
    * `java -jar target/spring-jdbc-template-0.0.1-SNAPSHOT.jar`
 
+## Run on Docker-compose
+
+1. [Install Docker](https://docs.docker.com/get-docker/)
+2. [Install Docker-Compose](https://docs.docker.com/compose/install/)
+3. Execute:
+   * `mvn spring-boot:build-image `
+   * `docker-compose up`
+
 ### Guides
 
 The following guides illustrate how to use some features concretely:
